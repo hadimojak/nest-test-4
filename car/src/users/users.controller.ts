@@ -12,6 +12,8 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { UsersService } from './users.service';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { User } from './users.entity';
+import { UseInterceptors } from '@nestjs/common';
+import { SerializeInterceptor } from '../interceptors/serialize.interceptor';
 
 @Controller('auth')
 export class UsersController {
@@ -23,10 +25,13 @@ export class UsersController {
     return;
   }
 
+  @UseInterceptors(SerializeInterceptor)
   @Get('/:id')
   async findUserById(
     @Param() params: { id: number },
   ): Promise<Pick<User, 'email' | 'id' | 'password'>> {
+    console.log('handler is running');
+
     return await this.userService.findOne(+params.id);
   }
 

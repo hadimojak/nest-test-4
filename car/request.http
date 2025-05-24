@@ -10,7 +10,7 @@ Content-Type: application/json
 
 ###
 
-GET http://localhost:3000/auth/11
+GET http://localhost:3000/auth/3
 Content-Type: application/json
 
 ###
