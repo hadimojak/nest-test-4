@@ -35,9 +35,11 @@ export class UsersService {
   }
 
   async remove(id: number): Promise<void> {
-    const user = await this.repo.findOne({ where: { id } });
+    const user = await this.repo.findOneBy({ id });
     if (!user) throw new NotFoundException('user not found');
-    await this.repo.remove(user);
+    if (user) {
+      await this.repo.remove(user);
+    }
     return;
   }
 }

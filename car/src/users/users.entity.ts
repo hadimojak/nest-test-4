@@ -5,12 +5,15 @@ import {
   Entity,
   Column,
   PrimaryGeneratedColumn,
+  BeforeRemove,
 } from 'typeorm';
 
 @Entity()
 export class User {
   @PrimaryGeneratedColumn()
   id: number;
+
+  private _idBeforeRemove: number;
 
   @Column()
   email: string;
@@ -28,8 +31,13 @@ export class User {
     console.log(`updated use with id : ${this.id}`);
   }
 
+  @BeforeRemove()
+  cacheIdBeforeRemove() {
+    this._idBeforeRemove = this.id;
+  }
+
   @AfterRemove()
   logRemove() {
-    console.log(`removed use with id : ${this.id}`);
+    console.log(`removed use with id : ${this._idBeforeRemove}`);
   }
 }

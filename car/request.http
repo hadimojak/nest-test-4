@@ -10,24 +10,24 @@ Content-Type: application/json
 
 ###
 
-GET http://localhost:3000/auth/20 
+GET http://localhost:3000/auth/11
 Content-Type: application/json
 
 ###
 
-GET http://localhost:3000/auth?email=hadimojak@gmail.com 
+GET http://localhost:3000/auth?email=annnn@gmail.com
 Content-Type: application/json
 
 ###
 
-PATCH http://localhost:3000/auth/3
+PATCH http://localhost:3000/auth/10
 Content-Type: application/json
 
 {
-    "email1": "uahoo@yahoo.com"
+    "email": "uahoo@yahoo.com"
 }
 
 ###
 
-DELETE http://localhost:3000/auth/2 
+DELETE http://localhost:3000/auth/10
 Content-Type: application/json
