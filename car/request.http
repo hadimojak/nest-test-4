@@ -4,8 +4,17 @@ POST http://localhost:3000/auth/signup
 Content-Type: application/json
 
 {
-    "email": "annnn1200@gmail.com",
+    "email": "sdf2345@gmail.com",
     "password": "piouasd807"
+}
+
+###
+POST http://localhost:3000/auth/signin 
+Content-Type: application/json
+
+{
+    "email": "sdf2345@gmail.com",
+    "password": "piouasd87"
 }
 
 ###
@@ -29,5 +38,5 @@ Content-Type: application/json
 
 ###
 
-DELETE http://localhost:3000/auth/10
+DELETE http://localhost:3000/auth/24
 Content-Type: application/json

@@ -8,12 +8,12 @@ import {
   BeforeRemove,
 } from 'typeorm';
 
+const privateData = new WeakMap<any, { localId: number }>();
+
 @Entity()
 export class User {
   @PrimaryGeneratedColumn()
   id: number;
-
-  private _idBeforeRemove: number;
 
   @Column()
   email: string;
@@ -22,22 +22,22 @@ export class User {
   password: string;
 
   @AfterInsert()
-  logInsert() {
+  logInsert?() {
     console.log(`1inserted use with id : ${this.id}`);
   }
 
   @AfterUpdate()
-  logUpdate() {
+  logUpdate?() {
     console.log(`updated use with id : ${this.id}`);
   }
 
   @BeforeRemove()
-  cacheIdBeforeRemove() {
-    this._idBeforeRemove = this.id;
+  cacheIdBeforeRemove?() {
+    privateData.set(this, { localId: this.id });
   }
 
   @AfterRemove()
-  logRemove() {
-    console.log(`removed use with id : ${this._idBeforeRemove}`);
+  logRemove?() {
+    console.log(`removed use with id : ${privateData.get(this)?.localId}`);
   }
 }

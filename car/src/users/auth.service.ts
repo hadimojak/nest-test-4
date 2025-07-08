@@ -1,4 +1,8 @@
-import { Injectable, BadRequestException } from '@nestjs/common';
+import {
+  Injectable,
+  BadRequestException,
+  UnauthorizedException,
+} from '@nestjs/common';
 import { UsersService } from './users.service';
 import { randomBytes, scrypt as __scrypt } from 'crypto';
 import { promisify } from 'util';
@@ -24,5 +28,17 @@ export class AuthService {
     return user;
   }
 
-  signin() {}
+  async signin(email: string, password: string) {
+    const [user] = await this.userService.find(email);
+    if (!user)
+      throw new UnauthorizedException('email or password must be incurrect');
+    const [salt, storedHash] = user.password.split('.');
+
+    const hash = (await scrypt(password, salt, 32)) as Buffer;
+
+    if (storedHash !== hash.toString('hex'))
+      throw new UnauthorizedException('email or password must be incurrect');
+
+    return user;
+  }
 }
