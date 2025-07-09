@@ -4,7 +4,7 @@ POST http://localhost:3000/auth/signup
 Content-Type: application/json
 
 {
-    "email": "sdf2345@gmail.com",
+    "email": "hh6777@gmail.com",
     "password": "piouasd807"
 }
 
@@ -13,13 +13,17 @@ POST http://localhost:3000/auth/signin
 Content-Type: application/json
 
 {
-    "email": "sdf2345@gmail.com",
-    "password": "piouasd87"
+   "email": "hh6777@gmail.com",
+    "password": "piouasd807"
 }
 
 ###
 
 GET http://localhost:3000/auth/4
+Content-Type: application/json
+
+###
+GET http://localhost:3000/auth/whoami
 Content-Type: application/json
 
 ###
