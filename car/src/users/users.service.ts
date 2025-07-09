@@ -1,4 +1,8 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import {
+  Injectable,
+  NotFoundException,
+  UnauthorizedException,
+} from '@nestjs/common';
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import { User } from './users.entity';
@@ -13,7 +17,10 @@ export class UsersService {
     return user;
   }
 
-  async findOne(id: number): Promise<Pick<User, 'email' | 'id' | 'password'>> {
+  async findOne(
+    id: number,
+  ): Promise<Pick<User, 'email' | 'id' | 'password'> | null> {
+    if (!id) throw new UnauthorizedException('not authorized');
     const user = await this.repo.findOne({ where: { id } });
     if (!user) throw new NotFoundException('user not found');
     return user;

@@ -27,7 +27,12 @@ export class UsersController {
 
   @Get('/whoami')
   async whoAmI(@Session() session: any) {
-    return this.userService.findOne(session.userId);
+    return await this.userService.findOne(session.userId);
+  }
+
+  @Post('/signout')
+  signOut(@Session() session: any): void {
+    session.userId = null;
   }
 
   @Post('/signup')
@@ -53,7 +58,7 @@ export class UsersController {
   @Get('/:id')
   async findUserById(
     @Param() params: { id: number },
-  ): Promise<Pick<User, 'email' | 'id' | 'password'>> {
+  ): Promise<Pick<User, 'email' | 'id' | 'password'> | null> {
     return await this.userService.findOne(+params.id);
   }
 
