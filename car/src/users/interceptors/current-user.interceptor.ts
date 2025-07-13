@@ -6,6 +6,12 @@ import {
 } from '@nestjs/common';
 import { UsersService } from '../users.service';
 import { Observable } from 'rxjs';
+import { Request } from 'express';
+import { User } from '../users.entity';
+
+interface ReqWithCurrentUser extends Request {
+  currentUser?: User;
+}
 
 @Injectable()
 export class currentUserInterceptor implements NestInterceptor {
@@ -15,11 +21,11 @@ export class currentUserInterceptor implements NestInterceptor {
     context: ExecutionContext,
     next: CallHandler<any>,
   ): Promise<Observable<any>> {
-    const request = context.switchToHttp().getRequest();
-    const { userId } = request.session;
+    const request = context.switchToHttp().getRequest<ReqWithCurrentUser>();
+    const { userId } = request.session as { userId?: number | null };
 
     if (userId) {
-      const user = await this.usersService.findOne(userId);
+      const user = (await this.usersService.findOne(userId)) as User;
       request.currentUser = user;
     }
 

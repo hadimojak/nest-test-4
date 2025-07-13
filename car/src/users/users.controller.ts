@@ -32,19 +32,19 @@ export class UsersController {
   // }
 
   @Get('/whoami')
-  async whoAmI(@CurrentUser() user: string) {
+  async whoAmI(@CurrentUser() user: Promise<User>) {
     return user;
   }
 
   @Post('/signout')
-  signOut(@Session() session: any): void {
+  signOut(@Session() session: { userId?: number | null }): void {
     session.userId = null;
   }
 
   @Post('/signup')
   async createUser(
     @Body() body: CreateUserDto,
-    @Session() session: any,
+    @Session() session: { userId?: number | null },
   ): Promise<CreateUserDto> {
     const user = await this.authService.signup(body.email, body.password);
     session.userId = user.id;
@@ -54,7 +54,7 @@ export class UsersController {
   @Post('/signin')
   async signin(
     @Body() body: CreateUserDto,
-    @Session() session: any,
+    @Session() session: { userId?: number | null },
   ): Promise<CreateUserDto> {
     const user = await this.authService.signin(body.email, body.password);
     session.userId = user.id;
