@@ -17,18 +17,14 @@ export class UsersService {
     return user;
   }
 
-  async findOne(
-    id: number,
-  ): Promise<Pick<User, 'email' | 'id' | 'password'> | null> {
+  async findOne(id: number): Promise<User | null> {
     if (!id) throw new UnauthorizedException('not authorized');
     const user = await this.repo.findOne({ where: { id } });
     if (!user) throw new NotFoundException('user not found');
     return user;
   }
 
-  async find(
-    email: string,
-  ): Promise<Pick<User, 'email' | 'id' | 'password'>[]> {
+  async find(email: string): Promise<User[]> {
     const users = await this.repo.find({ where: { email: email } });
     return users;
   }

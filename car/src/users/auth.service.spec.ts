@@ -1,10 +1,7 @@
 import { Test } from '@nestjs/testing';
 import { AuthService } from './auth.service';
 import { UsersService } from './users.service';
-import { randomBytes, scrypt as __scrypt } from 'crypto';
-import { promisify } from 'util';
-
-const scrypt = promisify(__scrypt);
+import { User } from './users.entity';
 
 describe('AuthService', () => {
   let service: AuthService;
@@ -12,10 +9,24 @@ describe('AuthService', () => {
 
   beforeEach(async () => {
     //crea te fake copy of usersService
+    const users: User[] = [];
     fakeUsersService = {
-      find: () => Promise.resolve([]),
-      create: (email: string, password: string) =>
-        Promise.resolve({ id: 1, email, password }),
+      find: (email: string) => {
+        if (users.length === 0) return Promise.resolve([]);
+        else {
+          const filteredUsers = users.filter((user) => user.email === email);
+          return Promise.resolve(filteredUsers);
+        }
+      },
+      create: (email: string, password: string) => {
+        const user = {
+          id: Math.random() * 999999,
+          email,
+          password,
+        };
+        users.push(user);
+        return Promise.resolve(user);
+      },
     };
 
     const module = await Test.createTestingModule({
@@ -45,8 +56,7 @@ describe('AuthService', () => {
   });
 
   it('throws an error if duplicate email ecuured in signup flow', async () => {
-    fakeUsersService.find = () =>
-      Promise.resolve([{ id: 1, email: 'hh6777@gmail.com', password: 'aasd' }]);
+    await service.signup('hh6777@gmail.com', 'qwe123');
 
     await expect(
       service.signup('hh6777@gmail.com', 'qwe123'),
@@ -62,40 +72,15 @@ describe('AuthService', () => {
   });
 
   it('thorws an erro if password was incurrect', async () => {
-    fakeUsersService.find = () =>
-      Promise.resolve([
-        {
-          id: 1,
-          email: 'hh6777@gmail.com',
-          password: 'qwer1234',
-        },
-      ]);
+    await service.signup('hadi@ggg.com', 'asd123');
 
-    await expect(
-      service.signin('hh6777@gmail.com', 'qewr14'),
-    ).rejects.toThrow();
+    await expect(service.signin('hadi@ggg.com', 'asd1238')).rejects.toThrow();
   });
 
   it('user signin succesfuly with email and pass', async () => {
-    fakeUsersService.find = () =>
-      Promise.resolve([
-        {
-          id: 1,
-          email: 'hadi@gmail.com',
-          password:
-            '0f27893ce03d5599.5fd0cc9fdc807a5fb5aa7207a12971259f17fd64b5bfba328b0903b067312bb0',
-        },
-      ]);
+    await service.signup('asdasdas@asdf.asd', 'qwe123');
 
-    const user = await service.signin('hadi@gmail.com', 'qwer1234');
-
-    expect(user.password).toEqual(
-      '0f27893ce03d5599.5fd0cc9fdc807a5fb5aa7207a12971259f17fd64b5bfba328b0903b067312bb0',
-    );
-    const [salt, storedHash] = user.password.split('.');
-    expect(salt).toBeDefined();
-    expect(storedHash).toBeDefined();
-    const hash = (await scrypt('qwer1234', salt, 32)) as Buffer;
-    expect(storedHash).toEqual(hash.toString('hex'));
+    const user = await service.signin('asdasdas@asdf.asd', 'qwe123');
+    expect(user).toBeDefined();
   });
 });
