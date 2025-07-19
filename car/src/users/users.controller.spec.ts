@@ -3,6 +3,7 @@ import { UsersController } from './users.controller';
 import { UsersService } from './users.service';
 import { AuthService } from './auth.service';
 import { User } from './users.entity';
+import { NotFoundException } from '@nestjs/common';
 
 describe('UsersController', () => {
   let controller: UsersController;
@@ -11,9 +12,10 @@ describe('UsersController', () => {
 
   beforeEach(async () => {
     fakeUsersService = {
-      find: (email: string) => {
+      find: () => {
         return Promise.resolve([
           { id: 1, email: 'asdf@asdf.com', password: 'asdf' },
+          { id: 2, email: 'qwer@qwe.com', password: 'qwer' },
         ]);
       },
       findOne: (id) =>
@@ -43,7 +45,20 @@ describe('UsersController', () => {
 
   it('find all users with given email', async () => {
     const users = await controller.findUser({ email: 'asdf@asdf.com' });
-    expect(users.length).toEqual(1);
+
+    expect(users.length).toEqual(2);
     expect(users[0].email).toEqual('asdf@asdf.com');
+  });
+
+  it('find user by given id', async () => {
+    const user = await controller.findUserById({ id: 1 });
+    expect(user?.email).toEqual('asdf@asdf.com');
+  });
+
+  it('find user by given id no found', async () => {
+    fakeUsersService.findOne = () => Promise.resolve(null);
+    await expect(controller.findUserById({ id: 2 })).rejects.toThrow(
+      NotFoundException,
+    );
   });
 });

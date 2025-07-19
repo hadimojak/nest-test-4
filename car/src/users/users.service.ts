@@ -18,9 +18,7 @@ export class UsersService {
   }
 
   async findOne(id: number): Promise<User | null> {
-    if (!id) throw new UnauthorizedException('not authorized');
     const user = await this.repo.findOne({ where: { id } });
-    if (!user) throw new NotFoundException('user not found');
     return user;
   }
 
