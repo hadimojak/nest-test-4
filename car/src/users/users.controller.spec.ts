@@ -4,6 +4,7 @@ import { UsersService } from './users.service';
 import { AuthService } from './auth.service';
 import { User } from './users.entity';
 import { NotFoundException } from '@nestjs/common';
+import { SessionData } from 'src/guards/auth.guard';
 
 describe('UsersController', () => {
   let controller: UsersController;
@@ -18,14 +19,16 @@ describe('UsersController', () => {
           { id: 2, email: 'qwer@qwe.com', password: 'qwer' },
         ]);
       },
-      findOne: (id) =>
+      findOne: (id: number) =>
         Promise.resolve({ id, email: 'asdf@asdf.com', password: 'asdf' }),
       // remove: (id) => {},
       // update: (id, attrs) => {},
     };
     fakeAuthService = {
       // signup: (email, password) => {},
-      // signin: (email, password) => {},
+      signin: (email: string, password: string) => {
+        return Promise.resolve({ id: 1, email, password });
+      },
     };
 
     const module: TestingModule = await Test.createTestingModule({
@@ -55,10 +58,21 @@ describe('UsersController', () => {
     expect(user?.email).toEqual('asdf@asdf.com');
   });
 
-  it('find user by given id no found', async () => {
+  it('find user by given id not found', async () => {
     fakeUsersService.findOne = () => Promise.resolve(null);
-    await expect(controller.findUserById({ id: 2 })).rejects.toThrow(
+    await expect(controller.findUserById({ id: 1 })).rejects.toThrow(
       NotFoundException,
     );
+  });
+
+  it('signin process route update session object', async () => {
+    const session: SessionData = {};
+    const user = (await controller.signin(
+      { email: 'aaaa@asd.com', password: 'asdqwe' },
+      session,
+    )) as User;
+
+    expect(user.id).toEqual(1);
+    expect(session.userId);
   });
 });

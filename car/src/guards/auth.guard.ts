@@ -6,7 +6,7 @@ import {
 import { Observable } from 'rxjs';
 import { Request } from 'express';
 
-interface SessionData {
+export interface SessionData {
   userId?: number;
 }
 
