@@ -19,7 +19,7 @@ describe('Authentication System (e2e)', () => {
   });
 
   it('hanldes the signup request', async () => {
-    const email = '3123asd@con.vom';
+    const email = '31asd134sd@con.vom';
     const res = await request(app.getHttpServer())
       .post('/auth/signup')
       .send({
@@ -29,5 +29,28 @@ describe('Authentication System (e2e)', () => {
       .expect(201);
 
     expect(res.get('Set-Cookie')).toBeDefined();
+  });
+
+  it('signup as new user and the user back', async () => {
+    const email = '31asd134sd@con.vom';
+    const res = await request(app.getHttpServer())
+      .post('/auth/signup')
+      .send({
+        email,
+        password: 'qwer1234',
+      })
+      .expect(201);
+
+    const cookie = res.get('Set-Cookie') as string[];
+    console.log(cookie);
+
+    const response = await request(app.getHttpServer())
+      .get('/auth/whoami')
+      .set('Cookie', cookie)
+      .expect(200);
+
+    expect(response.body).toBeDefined();
+    expect(response.body.id).toEqual(1);
+    expect(response.body.email).toEqual(email);
   });
 });
