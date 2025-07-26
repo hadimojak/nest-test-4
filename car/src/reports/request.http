@@ -1,0 +1,9 @@
+
+###
+POST http://localhost:3000/reports
+Content-Type: application/json
+
+{"price":134000,"make":"usa","model":"mustang",
+"year":2012,"lng":"35.703956","lat":"51.470087",
+"mileage":12000
+}

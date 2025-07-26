@@ -1,8 +1,17 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
-import { IsNumber, IsString } from 'class-validator';
+import {
+  IsNumber,
+  IsString,
+  IsLatitude,
+  IsLongitude,
+  Min,
+  Max,
+} from 'class-validator';
 
 export class CreateReportDto {
   @IsNumber()
+  @Min(0)
+  @Max(1000000)
   price: number;
 
   @IsString()
@@ -12,14 +21,18 @@ export class CreateReportDto {
   model: string;
 
   @IsNumber()
+  @Min(1930)
+  @Max(2050)
   year: number;
 
-  @IsString()
+  @IsLongitude()
   lng: string;
 
-  @IsString()
+  @IsLatitude()
   lat: string;
 
   @IsNumber()
+  @Min(0)
+  @Max(1000000)
   mileage: number;
 }

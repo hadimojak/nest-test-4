@@ -6,7 +6,9 @@ import {
   Column,
   PrimaryGeneratedColumn,
   BeforeRemove,
+  OneToMany,
 } from 'typeorm';
+import { Report } from 'src/reports/reports.entity';
 
 const privateData = new WeakMap<any, { localId: number }>();
 
@@ -20,6 +22,9 @@ export class User {
 
   @Column()
   password: string;
+
+  @OneToMany(() => Report, (report) => report.user)
+  reports: Report[];
 
   @AfterInsert()
   logInsert?() {
