@@ -1,32 +1,11 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
-import { type } from 'class-validator';
-import {}
+import { Type } from 'class-transformer';
+import { ValidateNested, ArrayMinSize } from 'class-validator';
+import { CreateReportDto } from './create-report.dto';
 
-export class CreateReportDto {
-  @IsNumber()
-  @Min(0)
-  @Max(1000000)
-  price: number;
-
-  @IsString()
-  make: string;
-
-  @IsString()
-  model: string;
-
-  @IsNumber()
-  @Min(1930)
-  @Max(2050)
-  year: number;
-
-  @IsLongitude()
-  lng: number;
-
-  @IsLatitude()
-  lat: number;
-
-  @IsNumber()
-  @Min(0)
-  @Max(1000000)
-  mileage: number;
+export class CreateBulkReportDto {
+  @ValidateNested({ each: true })
+  @Type(() => CreateReportDto)
+  @ArrayMinSize(1)
+  reports: CreateReportDto[];
 }

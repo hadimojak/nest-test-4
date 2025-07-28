@@ -18,6 +18,8 @@ import { Serialize } from '../interceptors/serialize.interceptor';
 import { ApproveReportDto } from './dto/Approve-report.dto';
 import { AdminGuard } from '../guards/admin.guard';
 import { GetEstimateDto } from './dto/get-estimate.dto';
+import { CreateBulkReportDto } from './dto/create-bulk-report.dto';
+import { Report } from './reports.entity';
 
 @Controller('reports')
 export class ReportsController {
@@ -33,8 +35,11 @@ export class ReportsController {
   @Post('/bulk')
   @UseGuards(AuthGuard)
   @Serialize(ReportDto)
-  createBulkReport(@Body() body: CreateReportDto, @CurrentUser() user: User) {
-    return this.reportsService.create(body, user);
+  createBulkReport(
+    @Body() body: CreateBulkReportDto,
+    @CurrentUser() user: User,
+  ): Promise<Report[]> {
+    return this.reportsService.bulkCreate(body, user);
   }
 
   @Patch('/:id')
@@ -47,7 +52,7 @@ export class ReportsController {
   }
 
   @Get()
-  getEstimate(@Query() query: GetEstimateDto) {
-    console.log({ query });
+  getEstimate(@Query() query: GetEstimateDto): Promise<Report[]> {
+    return this.reportsService.createEstimate(query);
   }
 }

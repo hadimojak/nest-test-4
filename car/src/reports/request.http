@@ -14,6 +14,916 @@ Content-Type: application/json
 
 
 ###
+POST http://localhost:3000/reports/bulk
+Content-Type: application/json
+
+{
+  "reports": [
+    {
+      "make": "GMC",
+      "model": "Yukon",
+      "year": 2016,
+      "lat": 9.258684,
+      "lng": 105.26043,
+      "mileage": 459198,
+      "price": 234897
+    },
+    {
+      "make": "Ford",
+      "model": "Mustang",
+      "year": 2034,
+      "lat": -39.91057,
+      "lng": -43.799939,
+      "mileage": 651473,
+      "price": 303305
+    },
+    {
+      "make": "Ford",
+      "model": "Focus",
+      "year": 2046,
+      "lat": 13.095674,
+      "lng": -91.459417,
+      "mileage": 325259,
+      "price": 326901
+    },
+    {
+      "make": "Honda",
+      "model": "Accord",
+      "year": 1950,
+      "lat": 60.282798,
+      "lng": -109.561906,
+      "mileage": 303796,
+      "price": 947206
+    },
+    {
+      "make": "Ford",
+      "model": "Focus",
+      "year": 1947,
+      "lat": 9.400852,
+      "lng": -68.297172,
+      "mileage": 7299,
+      "price": 97740
+    },
+    {
+      "make": "Kia",
+      "model": "Sportage",
+      "year": 2010,
+      "lat": -52.139414,
+      "lng": -55.354933,
+      "mileage": 717205,
+      "price": 602231
+    },
+    {
+      "make": "Chevrolet",
+      "model": "Impala",
+      "year": 1962,
+      "lat": 82.115257,
+      "lng": 178.717795,
+      "mileage": 808000,
+      "price": 694685
+    },
+    {
+      "make": "Toyota",
+      "model": "Highlander",
+      "year": 1992,
+      "lat": -87.6668,
+      "lng": -38.288368,
+      "mileage": 827112,
+      "price": 561212
+    },
+    {
+      "make": "Kia",
+      "model": "Sportage",
+      "year": 2039,
+      "lat": -61.098127,
+      "lng": 62.891791,
+      "mileage": 183213,
+      "price": 282520
+    },
+    {
+      "make": "Hyundai",
+      "model": "Tucson",
+      "year": 2034,
+      "lat": 34.037989,
+      "lng": -67.143932,
+      "mileage": 128423,
+      "price": 721040
+    },
+    {
+      "make": "Chevrolet",
+      "model": "Camaro",
+      "year": 1962,
+      "lat": -37.302585,
+      "lng": -87.405144,
+      "mileage": 59911,
+      "price": 915411
+    },
+    {
+      "make": "Tesla",
+      "model": "Model S",
+      "year": 1975,
+      "lat": 6.210098,
+      "lng": 18.064389,
+      "mileage": 957265,
+      "price": 44833
+    },
+    {
+      "make": "Toyota",
+      "model": "Camry",
+      "year": 2033,
+      "lat": -62.363271,
+      "lng": 75.254953,
+      "mileage": 259294,
+      "price": 61448
+    },
+    {
+      "make": "Ford",
+      "model": "Explorer",
+      "year": 1973,
+      "lat": 23.430966,
+      "lng": 10.02477,
+      "mileage": 318477,
+      "price": 877315
+    },
+    {
+      "make": "GMC",
+      "model": "Sierra",
+      "year": 2028,
+      "lat": 78.088784,
+      "lng": 175.325607,
+      "mileage": 271181,
+      "price": 738055
+    },
+    {
+      "make": "Nissan",
+      "model": "Sentra",
+      "year": 1994,
+      "lat": -7.19196,
+      "lng": 165.23583,
+      "mileage": 463340,
+      "price": 27140
+    },
+    {
+      "make": "BMW",
+      "model": "320i",
+      "year": 1933,
+      "lat": 73.975595,
+      "lng": 90.70463,
+      "mileage": 776839,
+      "price": 797643
+    },
+    {
+      "make": "GMC",
+      "model": "Terrain",
+      "year": 2013,
+      "lat": -67.407766,
+      "lng": -15.560386,
+      "mileage": 494791,
+      "price": 307003
+    },
+    {
+      "make": "Ford",
+      "model": "Mustang",
+      "year": 2001,
+      "lat": 71.601997,
+      "lng": -60.921787,
+      "mileage": 956803,
+      "price": 75424
+    },
+    {
+      "make": "Hyundai",
+      "model": "Sonata",
+      "year": 1934,
+      "lat": 44.265553,
+      "lng": -122.100142,
+      "mileage": 185819,
+      "price": 133988
+    },
+    {
+      "make": "Tesla",
+      "model": "Model 3",
+      "year": 2002,
+      "lat": 61.605758,
+      "lng": 134.594086,
+      "mileage": 909586,
+      "price": 878828
+    },
+    {
+      "make": "Honda",
+      "model": "CR-V",
+      "year": 2010,
+      "lat": 72.191429,
+      "lng": 73.102058,
+      "mileage": 642783,
+      "price": 411427
+    },
+    {
+      "make": "Hyundai",
+      "model": "Tucson",
+      "year": 1977,
+      "lat": 13.245713,
+      "lng": 94.47977,
+      "mileage": 980432,
+      "price": 916127
+    },
+    {
+      "make": "Nissan",
+      "model": "Sentra",
+      "year": 1956,
+      "lat": 3.754895,
+      "lng": -52.079537,
+      "mileage": 97495,
+      "price": 20476
+    },
+    {
+      "make": "Honda",
+      "model": "Accord",
+      "year": 1970,
+      "lat": 48.439904,
+      "lng": 91.086178,
+      "mileage": 264238,
+      "price": 720273
+    },
+    {
+      "make": "GMC",
+      "model": "Terrain",
+      "year": 1979,
+      "lat": 14.699182,
+      "lng": 106.608306,
+      "mileage": 323370,
+      "price": 535286
+    },
+    {
+      "make": "Toyota",
+      "model": "Camry",
+      "year": 1945,
+      "lat": 73.315793,
+      "lng": 141.369055,
+      "mileage": 300665,
+      "price": 463098
+    },
+    {
+      "make": "Honda",
+      "model": "Accord",
+      "year": 1960,
+      "lat": 12.534984,
+      "lng": -1.6437,
+      "mileage": 69154,
+      "price": 493520
+    },
+    {
+      "make": "Kia",
+      "model": "Optima",
+      "year": 1951,
+      "lat": -10.374011,
+      "lng": -25.769904,
+      "mileage": 354478,
+      "price": 505641
+    },
+    {
+      "make": "BMW",
+      "model": "X5",
+      "year": 1979,
+      "lat": -45.166277,
+      "lng": 108.508802,
+      "mileage": 444460,
+      "price": 968567
+    },
+    {
+      "make": "Kia",
+      "model": "Sorento",
+      "year": 1954,
+      "lat": -75.684508,
+      "lng": -59.564535,
+      "mileage": 750225,
+      "price": 316846
+    },
+    {
+      "make": "Kia",
+      "model": "Sportage",
+      "year": 2020,
+      "lat": 60.720281,
+      "lng": 92.972068,
+      "mileage": 982065,
+      "price": 183449
+    },
+    {
+      "make": "Ford",
+      "model": "Focus",
+      "year": 2027,
+      "lat": -34.050391,
+      "lng": 105.897428,
+      "mileage": 486028,
+      "price": 158892
+    },
+    {
+      "make": "BMW",
+      "model": "M3",
+      "year": 2008,
+      "lat": 40.041406,
+      "lng": 80.596979,
+      "mileage": 345003,
+      "price": 660712
+    },
+    {
+      "make": "GMC",
+      "model": "Terrain",
+      "year": 1966,
+      "lat": 85.926494,
+      "lng": 49.959601,
+      "mileage": 300029,
+      "price": 727170
+    },
+    {
+      "make": "BMW",
+      "model": "M3",
+      "year": 2021,
+      "lat": -48.06281,
+      "lng": 44.588605,
+      "mileage": 539774,
+      "price": 145813
+    },
+    {
+      "make": "Nissan",
+      "model": "Sentra",
+      "year": 1997,
+      "lat": 69.501553,
+      "lng": 121.301304,
+      "mileage": 934222,
+      "price": 724041
+    },
+    {
+      "make": "BMW",
+      "model": "M3",
+      "year": 1968,
+      "lat": 61.168319,
+      "lng": -2.026367,
+      "mileage": 510413,
+      "price": 160796
+    },
+    {
+      "make": "Kia",
+      "model": "Optima",
+      "year": 2020,
+      "lat": -58.356374,
+      "lng": -104.76738,
+      "mileage": 787291,
+      "price": 370819
+    },
+    {
+      "make": "Tesla",
+      "model": "Model 3",
+      "year": 1944,
+      "lat": -67.816074,
+      "lng": -46.621139,
+      "mileage": 146859,
+      "price": 667243
+    },
+    {
+      "make": "Honda",
+      "model": "Accord",
+      "year": 2041,
+      "lat": 76.243896,
+      "lng": -143.381252,
+      "mileage": 277441,
+      "price": 464491
+    },
+    {
+      "make": "Ford",
+      "model": "Explorer",
+      "year": 2045,
+      "lat": -84.770324,
+      "lng": -173.428824,
+      "mileage": 753028,
+      "price": 287207
+    },
+    {
+      "make": "Honda",
+      "model": "CR-V",
+      "year": 1965,
+      "lat": -39.777209,
+      "lng": 83.02539,
+      "mileage": 512164,
+      "price": 357905
+    },
+    {
+      "make": "GMC",
+      "model": "Sierra",
+      "year": 1983,
+      "lat": -45.20231,
+      "lng": 110.615329,
+      "mileage": 91982,
+      "price": 771717
+    },
+    {
+      "make": "Kia",
+      "model": "Sportage",
+      "year": 1975,
+      "lat": 68.643239,
+      "lng": 12.910416,
+      "mileage": 36164,
+      "price": 891884
+    },
+    {
+      "make": "BMW",
+      "model": "M3",
+      "year": 2017,
+      "lat": -71.256409,
+      "lng": 161.261171,
+      "mileage": 367620,
+      "price": 548367
+    },
+    {
+      "make": "Kia",
+      "model": "Sorento",
+      "year": 2011,
+      "lat": -61.054066,
+      "lng": -66.589656,
+      "mileage": 76161,
+      "price": 294666
+    },
+    {
+      "make": "BMW",
+      "model": "320i",
+      "year": 1956,
+      "lat": -84.167665,
+      "lng": 157.654825,
+      "mileage": 663639,
+      "price": 608418
+    },
+    {
+      "make": "Toyota",
+      "model": "RAV4",
+      "year": 1960,
+      "lat": -72.942921,
+      "lng": -137.296048,
+      "mileage": 504285,
+      "price": 568375
+    },
+    {
+      "make": "BMW",
+      "model": "X5",
+      "year": 2020,
+      "lat": 13.053492,
+      "lng": 141.999751,
+      "mileage": 316177,
+      "price": 686258
+    },
+    {
+      "make": "GMC",
+      "model": "Sierra",
+      "year": 2020,
+      "lat": 75.801552,
+      "lng": 127.524181,
+      "mileage": 317954,
+      "price": 720311
+    },
+    {
+      "make": "BMW",
+      "model": "X5",
+      "year": 2036,
+      "lat": 21.929079,
+      "lng": 155.667179,
+      "mileage": 579108,
+      "price": 647337
+    },
+    {
+      "make": "Nissan",
+      "model": "Altima",
+      "year": 1940,
+      "lat": 78.637027,
+      "lng": 142.163236,
+      "mileage": 681962,
+      "price": 203882
+    },
+    {
+      "make": "BMW",
+      "model": "M3",
+      "year": 1991,
+      "lat": 30.129506,
+      "lng": 93.52392,
+      "mileage": 216848,
+      "price": 803662
+    },
+    {
+      "make": "Kia",
+      "model": "Sportage",
+      "year": 1989,
+      "lat": -25.156969,
+      "lng": -142.167377,
+      "mileage": 413524,
+      "price": 635775
+    },
+    {
+      "make": "Chevrolet",
+      "model": "Impala",
+      "year": 1938,
+      "lat": 36.92396,
+      "lng": 121.067974,
+      "mileage": 19769,
+      "price": 471474
+    },
+    {
+      "make": "Nissan",
+      "model": "Sentra",
+      "year": 1951,
+      "lat": -15.302775,
+      "lng": 166.933887,
+      "mileage": 189280,
+      "price": 589717
+    },
+    {
+      "make": "Tesla",
+      "model": "Model X",
+      "year": 2028,
+      "lat": 55.732712,
+      "lng": 81.754206,
+      "mileage": 721574,
+      "price": 442927
+    },
+    {
+      "make": "Chevrolet",
+      "model": "Camaro",
+      "year": 1999,
+      "lat": -49.880438,
+      "lng": -4.777099,
+      "mileage": 690266,
+      "price": 853483
+    },
+    {
+      "make": "Nissan",
+      "model": "Altima",
+      "year": 1945,
+      "lat": -7.208201,
+      "lng": 21.727667,
+      "mileage": 27153,
+      "price": 306486
+    },
+    {
+      "make": "Chevrolet",
+      "model": "Camaro",
+      "year": 2042,
+      "lat": 81.313762,
+      "lng": 34.683368,
+      "mileage": 91175,
+      "price": 691148
+    },
+    {
+      "make": "GMC",
+      "model": "Yukon",
+      "year": 1943,
+      "lat": 53.854406,
+      "lng": -19.265791,
+      "mileage": 533259,
+      "price": 843934
+    },
+    {
+      "make": "Chevrolet",
+      "model": "Tahoe",
+      "year": 1941,
+      "lat": 51.301243,
+      "lng": -61.585117,
+      "mileage": 225666,
+      "price": 251130
+    },
+    {
+      "make": "GMC",
+      "model": "Sierra",
+      "year": 2050,
+      "lat": 82.27666,
+      "lng": 166.342876,
+      "mileage": 508159,
+      "price": 954920
+    },
+    {
+      "make": "Toyota",
+      "model": "Corolla",
+      "year": 1984,
+      "lat": -55.757808,
+      "lng": 124.576197,
+      "mileage": 564170,
+      "price": 184455
+    },
+    {
+      "make": "Chevrolet",
+      "model": "Camaro",
+      "year": 2013,
+      "lat": 32.368835,
+      "lng": -31.029569,
+      "mileage": 725062,
+      "price": 470879
+    },
+    {
+      "make": "Hyundai",
+      "model": "Sonata",
+      "year": 2014,
+      "lat": 20.057192,
+      "lng": 99.275173,
+      "mileage": 949352,
+      "price": 972653
+    },
+    {
+      "make": "Nissan",
+      "model": "Maxima",
+      "year": 2040,
+      "lat": 12.758226,
+      "lng": 120.557997,
+      "mileage": 852266,
+      "price": 713653
+    },
+    {
+      "make": "Tesla",
+      "model": "Model S",
+      "year": 2014,
+      "lat": 60.945602,
+      "lng": -32.72073,
+      "mileage": 665539,
+      "price": 342453
+    },
+    {
+      "make": "Honda",
+      "model": "Civic",
+      "year": 1938,
+      "lat": -81.039367,
+      "lng": 178.694949,
+      "mileage": 218841,
+      "price": 308569
+    },
+    {
+      "make": "GMC",
+      "model": "Sierra",
+      "year": 1930,
+      "lat": 11.394384,
+      "lng": 124.122805,
+      "mileage": 498112,
+      "price": 619780
+    },
+    {
+      "make": "Toyota",
+      "model": "Corolla",
+      "year": 1960,
+      "lat": -83.151775,
+      "lng": -24.638261,
+      "mileage": 211797,
+      "price": 576236
+    },
+    {
+      "make": "Chevrolet",
+      "model": "Camaro",
+      "year": 2042,
+      "lat": -29.294256,
+      "lng": -154.941886,
+      "mileage": 793976,
+      "price": 318159
+    },
+    {
+      "make": "Ford",
+      "model": "Mustang",
+      "year": 2004,
+      "lat": 57.062099,
+      "lng": 142.230869,
+      "mileage": 332962,
+      "price": 238271
+    },
+    {
+      "make": "Hyundai",
+      "model": "Sonata",
+      "year": 2011,
+      "lat": -52.264604,
+      "lng": 40.860428,
+      "mileage": 88048,
+      "price": 648409
+    },
+    {
+      "make": "Chevrolet",
+      "model": "Camaro",
+      "year": 1988,
+      "lat": 44.699774,
+      "lng": 52.445628,
+      "mileage": 621895,
+      "price": 258951
+    },
+    {
+      "make": "Tesla",
+      "model": "Model 3",
+      "year": 1974,
+      "lat": -14.253206,
+      "lng": -1.456758,
+      "mileage": 195810,
+      "price": 372997
+    },
+    {
+      "make": "Chevrolet",
+      "model": "Tahoe",
+      "year": 1932,
+      "lat": 25.116107,
+      "lng": 128.485787,
+      "mileage": 805608,
+      "price": 117123
+    },
+    {
+      "make": "Hyundai",
+      "model": "Sonata",
+      "year": 1957,
+      "lat": 86.785864,
+      "lng": -82.672776,
+      "mileage": 428320,
+      "price": 471274
+    },
+    {
+      "make": "BMW",
+      "model": "320i",
+      "year": 2038,
+      "lat": -15.573058,
+      "lng": 57.854579,
+      "mileage": 365524,
+      "price": 616766
+    },
+    {
+      "make": "Honda",
+      "model": "Civic",
+      "year": 2026,
+      "lat": 28.082445,
+      "lng": 113.36183,
+      "mileage": 466627,
+      "price": 575007
+    },
+    {
+      "make": "Tesla",
+      "model": "Model 3",
+      "year": 2043,
+      "lat": -89.503829,
+      "lng": 24.210487,
+      "mileage": 243039,
+      "price": 60352
+    },
+    {
+      "make": "Chevrolet",
+      "model": "Tahoe",
+      "year": 1984,
+      "lat": -74.440763,
+      "lng": -21.052052,
+      "mileage": 865203,
+      "price": 576256
+    },
+    {
+      "make": "GMC",
+      "model": "Sierra",
+      "year": 2029,
+      "lat": 25.791263,
+      "lng": -115.622063,
+      "mileage": 828135,
+      "price": 15126
+    },
+    {
+      "make": "Toyota",
+      "model": "Highlander",
+      "year": 2008,
+      "lat": -33.504063,
+      "lng": -45.155731,
+      "mileage": 89319,
+      "price": 943297
+    },
+    {
+      "make": "Ford",
+      "model": "F-150",
+      "year": 2023,
+      "lat": 79.582045,
+      "lng": 81.190512,
+      "mileage": 707788,
+      "price": 766518
+    },
+    {
+      "make": "Chevrolet",
+      "model": "Impala",
+      "year": 1980,
+      "lat": 27.968702,
+      "lng": 19.132662,
+      "mileage": 460878,
+      "price": 212956
+    },
+    {
+      "make": "Chevrolet",
+      "model": "Impala",
+      "year": 2026,
+      "lat": -21.465369,
+      "lng": -114.92274,
+      "mileage": 202443,
+      "price": 391484
+    },
+    {
+      "make": "BMW",
+      "model": "320i",
+      "year": 1984,
+      "lat": -89.417449,
+      "lng": -169.803255,
+      "mileage": 427015,
+      "price": 387041
+    },
+    {
+      "make": "Kia",
+      "model": "Sportage",
+      "year": 2004,
+      "lat": -53.680742,
+      "lng": -23.461978,
+      "mileage": 73054,
+      "price": 463174
+    },
+    {
+      "make": "Nissan",
+      "model": "Altima",
+      "year": 1997,
+      "lat": -70.382761,
+      "lng": -57.793918,
+      "mileage": 149662,
+      "price": 486463
+    },
+    {
+      "make": "BMW",
+      "model": "X5",
+      "year": 1936,
+      "lat": 34.326089,
+      "lng": -42.266708,
+      "mileage": 623892,
+      "price": 113851
+    },
+    {
+      "make": "Chevrolet",
+      "model": "Tahoe",
+      "year": 1965,
+      "lat": 27.680498,
+      "lng": 167.18372,
+      "mileage": 751852,
+      "price": 845500
+    },
+    {
+      "make": "Nissan",
+      "model": "Sentra",
+      "year": 1948,
+      "lat": 60.221393,
+      "lng": 167.056476,
+      "mileage": 23157,
+      "price": 81430
+    },
+    {
+      "make": "GMC",
+      "model": "Terrain",
+      "year": 1961,
+      "lat": -4.668127,
+      "lng": 22.394214,
+      "mileage": 652878,
+      "price": 741581
+    },
+    {
+      "make": "Ford",
+      "model": "F-150",
+      "year": 1943,
+      "lat": 50.121232,
+      "lng": 99.537202,
+      "mileage": 394972,
+      "price": 423521
+    },
+    {
+      "make": "Toyota",
+      "model": "Corolla",
+      "year": 1971,
+      "lat": -1.174335,
+      "lng": -131.126023,
+      "mileage": 976455,
+      "price": 716145
+    },
+    {
+      "make": "Toyota",
+      "model": "Highlander",
+      "year": 1930,
+      "lat": -46.645597,
+      "lng": -112.273441,
+      "mileage": 438718,
+      "price": 145465
+    },
+    {
+      "make": "Chevrolet",
+      "model": "Impala",
+      "year": 2016,
+      "lat": 66.76033,
+      "lng": 157.620381,
+      "mileage": 365977,
+      "price": 956912
+    },
+    {
+      "make": "Ford",
+      "model": "Focus",
+      "year": 2023,
+      "lat": 65.906984,
+      "lng": 160.335528,
+      "mileage": 252073,
+      "price": 354122
+    }
+  ]
+}
+
+
+###
 PATCH http://localhost:3000/reports/5
 Content-Type: application/json
 
