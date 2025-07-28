@@ -7,16 +7,21 @@ Content-Type: application/json
   "make": "usa",
   "model": "mustang",
   "year": 2012,
-  "lng": "35.703956",
-  "lat": "51.470087",
+  "lng": 35.703956,
+  "lat": 51.470087,
   "mileage": 12000
 }
 
 
 ###
-PATCH http://localhost:3000/reports/1
+PATCH http://localhost:3000/reports/5
 Content-Type: application/json
 
 {
-  "approved": false
+  "approved": true
 }
+
+
+###
+GET http://localhost:3000/reports?make=toyota&model=perius&year=2017&mileage=5000&lat=0&lng=0
+Content-Type: application/json

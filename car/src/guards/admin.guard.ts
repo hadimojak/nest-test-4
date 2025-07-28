@@ -4,9 +4,10 @@ import {
   UnauthorizedException,
 } from '@nestjs/common';
 import { Observable } from 'rxjs';
+import { User } from 'src/users/users.entity';
 
 export interface CurrentUser {
-  currnetUser?: { admin: boolean };
+  currentUser?: { admin: boolean } & User;
 }
 
 type ReqWithCurrentUser = Request & CurrentUser;
@@ -17,9 +18,9 @@ export class AdminGuard implements CanActivate {
   ): boolean | Promise<boolean> | Observable<boolean> {
     const request = context.switchToHttp().getRequest<ReqWithCurrentUser>();
 
-    if (!request.currnetUser)
+    if (!request.currentUser)
       throw new UnauthorizedException('you dont have admin privillage');
 
-    return request.currnetUser.admin;
+    return request.currentUser.admin;
   }
 }

@@ -22,10 +22,10 @@ export class Report {
   year: number;
 
   @Column()
-  lng: string;
+  lng: number;
 
   @Column()
-  lat: string;
+  lat: number;
 
   @Column()
   mileage: number;

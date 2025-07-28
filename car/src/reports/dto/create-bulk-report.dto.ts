@@ -1,12 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
-import {
-  IsNumber,
-  IsString,
-  IsLatitude,
-  IsLongitude,
-  Min,
-  Max,
-} from 'class-validator';
+import { type } from 'class-validator';
+import {}
 
 export class CreateReportDto {
   @IsNumber()
