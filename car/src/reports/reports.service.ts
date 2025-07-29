@@ -41,13 +41,30 @@ export class ReportsService {
     return this.repo.save(report);
   }
 
-  async createEstimate(estimateDto: GetEstimateDto): Promise<Report[] | any> {
-    console.log({ estimateDto });
+  async createEstimate({
+    model,
+    make,
+    lng,
+    lat,
+    mileage,
+    year,
+  }: GetEstimateDto): Promise<{ price: string | null }> {
+    console.log({ lat, lng });
 
-    const result = await this.repo
+    const result = (await this.repo
       .createQueryBuilder()
-      .select('*')
-      .getRawMany();
-    console.log({ result });
+      .select('AVG(price)', 'price')
+      .where('make=:make COLLATE NOCASE', { make })
+      .andWhere('model=:model COLLATE NOCASE', { model })
+      .andWhere('lng - :lng BETWEEN -10 AND 10', { lng })
+      .andWhere('lat - :lat BETWEEN -10 AND 10', { lat })
+      .andWhere('year - :year BETWEEN -3 AND 3', { year })
+      .andWhere('approved IS TRUE')
+      .orderBy('mileage- :mileage', 'DESC')
+      .setParameters({ mileage })
+      .limit(3)
+      .getRawOne()) as { price: string | null };
+
+    return result;
   }
 }

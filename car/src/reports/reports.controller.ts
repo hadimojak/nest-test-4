@@ -52,7 +52,9 @@ export class ReportsController {
   }
 
   @Get()
-  getEstimate(@Query() query: GetEstimateDto): Promise<Report[]> {
+  getEstimate(
+    @Query() query: GetEstimateDto,
+  ): Promise<{ price: string | null }> {
     return this.reportsService.createEstimate(query);
   }
 }

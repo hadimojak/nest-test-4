@@ -3,13 +3,14 @@ POST http://localhost:3000/reports
 Content-Type: application/json
 
 {
-  "price": 134000,
-  "make": "usa",
-  "model": "mustang",
-  "year": 2012,
-  "lng": 35.703956,
-  "lat": 51.470087,
-  "mileage": 12000
+  "price": 5206,
+  "make": "Toyota",
+  "model": "Camry",
+  "year": 2034,
+  "lng": 74.254953,
+  "lat": -66.363271,
+  "mileage": 5,
+  "userId": 1
 }
 
 
@@ -924,7 +925,7 @@ Content-Type: application/json
 
 
 ###
-PATCH http://localhost:3000/reports/5
+PATCH http://localhost:3000/reports/110
 Content-Type: application/json
 
 {
@@ -933,5 +934,5 @@ Content-Type: application/json
 
 
 ###
-GET http://localhost:3000/reports?make=toyota&model=perius&year=2017&mileage=5000&lat=0&lng=0
+GET http://localhost:3000/reports?make=toyota&model=camry&year=2032&mileage=5000&lat=-62&lng=79
 Content-Type: application/json
