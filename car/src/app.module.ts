@@ -9,7 +9,7 @@ import { User } from './users/users.entity';
 import { Report } from './reports/reports.entity';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 const cookieSession = require('cookie-session');
-
+const ormconfig = require('../ormconfig.js');
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -18,17 +18,18 @@ const cookieSession = require('cookie-session');
     }),
     ReportsModule,
     UsersModule,
-    TypeOrmModule.forRootAsync({
-      inject: [ConfigService],
-      useFactory: (config: ConfigService) => {
-        return {
-          type: 'sqlite',
-          database: config.get<string>('DB_NAME'),
-          entities: [User, Report],
-          synchronize: true,
-        };
-      },
-    }),
+    TypeOrmModule.forRoot(ormconfig),
+    // TypeOrmModule.forRootAsync({
+    //   inject: [ConfigService],
+    //   useFactory: (config: ConfigService) => {
+    //     return {
+    //       type: 'sqlite',
+    //       database: config.get<string>('DB_NAME'),
+    //       entities: [User, Report],
+    //       synchronize: true,
+    //     };
+    //   },
+    // }),
   ],
   controllers: [AppController],
   providers: [

@@ -8,7 +8,7 @@ import {
   BeforeRemove,
   OneToMany,
 } from 'typeorm';
-import { Report } from 'src/reports/reports.entity';
+import { Report } from '../reports/reports.entity';
 
 const privateData = new WeakMap<any, { localId: number }>();
 
