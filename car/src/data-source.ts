@@ -1,11 +1,10 @@
-import { DataSource, DataSourceOptions } from 'typeorm';
+import { DataSource, DataSourceOptions, MigrationExecutor } from 'typeorm';
 import * as path from 'path';
 
 const baseConfig: Partial<DataSourceOptions> = {
   type: 'sqlite',
   synchronize: false,
-  migrations: [path.join(__dirname, 'migrations', '*{.ts,.js}')],
-  entities: [path.join(__dirname, '**', '*.entity{.ts,.js}')],
+  migrations: [path.join(__dirname, 'migrations', '*.ts')],
   logging: false,
 };
 
@@ -15,11 +14,14 @@ switch (process.env.NODE_ENV) {
   case 'development':
     environmentConfig = {
       database: 'db.sqlite',
+      entities: [path.join(__dirname, '**', '*.entity.js')],
     };
     break;
   case 'test':
     environmentConfig = {
       database: 'test.sqlite',
+      entities: [path.join(__dirname, '**', '*.entity.ts')],
+      migrationsRun: true,
     };
     break;
   case 'production':
