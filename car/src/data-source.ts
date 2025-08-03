@@ -3,7 +3,6 @@ import * as path from 'path';
 
 const baseConfig: Partial<DataSourceOptions> = {
   synchronize: false,
-  migrations: [path.join(__dirname, 'migrations', '*.ts')],
   logging: false,
 };
 
@@ -14,7 +13,8 @@ switch (process.env.NODE_ENV) {
     environmentConfig = {
       type: 'sqlite',
       database: 'db.sqlite',
-      entities: [path.join(__dirname, '**', '*.entity.js')],
+      entities: [path.join(__dirname, '**', '*.entity.ts')],
+      migrations: [path.join(__dirname, 'migrations', '*.ts')],
     };
     break;
   case 'test':
@@ -22,6 +22,7 @@ switch (process.env.NODE_ENV) {
       type: 'sqlite',
       database: 'test.sqlite',
       entities: [path.join(__dirname, '**', '*.entity.ts')],
+      migrations: [path.join(__dirname, 'migrations', '*.ts')],
       migrationsRun: true,
     };
     break;
@@ -32,6 +33,7 @@ switch (process.env.NODE_ENV) {
       entities: [path.join(__dirname, '**', '*.entity.js')],
       migrationsRun: true,
       ssl: { rejectUnauthorized: false },
+      migrations: [path.join(__dirname, 'migrations', '*.js')],
     };
     break;
   default:
