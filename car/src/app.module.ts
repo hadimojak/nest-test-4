@@ -5,8 +5,6 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ReportsModule } from './reports/reports.module';
 import { UsersModule } from './users/users.module';
-import { User } from './users/users.entity';
-import { Report } from './reports/reports.entity';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 const cookieSession = require('cookie-session');
 import { AppDataSource } from './data-source';
@@ -22,17 +20,6 @@ import { AppDataSource } from './data-source';
       ...AppDataSource.options,
       autoLoadEntities: true,
     }),
-    // TypeOrmModule.forRootAsync({
-    //   inject: [ConfigService],
-    //   useFactory: (config: ConfigService) => {
-    //     return {
-    //       type: 'sqlite',
-    //       database: config.get<string>('DB_NAME'),
-    //       entities: [User, Report],
-    //       synchronize: true,
-    //     };
-    //   },
-    // }),
   ],
   controllers: [AppController],
   providers: [
