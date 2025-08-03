@@ -9,7 +9,7 @@ import { User } from './users/users.entity';
 import { Report } from './reports/reports.entity';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 const cookieSession = require('cookie-session');
-const ormconfig = require('../ormconfig.js');
+import { AppDataSource } from './data-source';
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -18,7 +18,10 @@ const ormconfig = require('../ormconfig.js');
     }),
     ReportsModule,
     UsersModule,
-    TypeOrmModule.forRoot(ormconfig),
+    TypeOrmModule.forRoot({
+      ...AppDataSource.options,
+      autoLoadEntities: true,
+    }),
     // TypeOrmModule.forRootAsync({
     //   inject: [ConfigService],
     //   useFactory: (config: ConfigService) => {
